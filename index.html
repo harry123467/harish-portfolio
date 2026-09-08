@@ -179,6 +179,7 @@ Harish Portfolio </title>
 
   .btn-primary{background:var(--accent); color:var(--ink);}
   .btn-primary:hover{background:#f16a41;}
+  .btn-primary:disabled{opacity:0.55; cursor:default; transform:none;}
 
   .btn-ghost{border-color:var(--line); color:var(--paper);}
   .btn-ghost:hover{border-color:var(--paper-dim);}
@@ -685,6 +686,16 @@ Harish Portfolio </title>
   .form-status.success{color:#7CC48A;}
   .form-status.error{color:var(--accent);}
 
+  /* honeypot — must stay invisible and un-focusable */
+  .zoho-honeypot{
+    position:absolute;
+    left:-9999px;
+    top:-9999px;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+  }
+
   @media (max-width:760px){
     .field-row{grid-template-columns:1fr;}
   }
@@ -764,7 +775,7 @@ Harish Portfolio </title>
   <section class="hero">
     <div class="wrap">
       <div>
-        <p class="hero-eyebrow">Frontend, WordPress & Zoho Developer</p>
+        <p class="hero-eyebrow">Frontend, WordPress &amp; Zoho Developer</p>
         <h1>I build interfaces that feel <em>inevitable</em>.</h1>
         <p class="lead">Frontend, WordPress and Zoho Developer with 3 years of experience building responsive websites, WooCommerce stores, custom plugins, Zoho solutions, API integrations, and business automation.</p>
         <div class="hero-actions">
@@ -776,12 +787,7 @@ Harish Portfolio </title>
       <div class="hero-figure">
         <div class="hero-frame">
           <div class="shape"></div>
-          <!--
-            Replace the src below with your own photo, e.g.:
-            <img src="my-photo.jpg" alt="Alex Rivera">
-            Left empty here so the page works with no files attached.
-          -->
-          <img src="harry1.jpeg" id="heroImg" alt="Portrait of Alex Rivera">
+          <img src="harry1.jpeg" id="heroImg" alt="Portrait of Harish Chauhan">
         </div>
       </div>
     </div>
@@ -795,7 +801,6 @@ Harish Portfolio </title>
           <h2>About</h2>
         </div>
         <p>I'm a Frontend, WordPress and Zoho Developer focused on creating modern, responsive websites and smart business solutions. I specialize in clean UI, WooCommerce stores, custom PHP plugins, Zoho automation, and API integrations.</p>
-        <p>Previously at two early-stage startups and a small design studio, building everything from marketing sites to internal tools used by hundreds of people daily.</p>
         <p>Creating everything from polished, responsive websites to custom Zoho solutions, helping businesses build better digital experiences and streamline their everyday workflows.</p>
         <p>Building modern websites, responsive interfaces, WooCommerce stores, and smart Zoho solutions — from business websites and landing pages to custom CRM workflows, integrations, and internal business tools.</p>
       </div>
@@ -813,7 +818,7 @@ Harish Portfolio </title>
           </div>
         </div>
         <div class="skill-group">
-          <h3>WordPress & WooCommerce</h3>
+          <h3>WordPress &amp; WooCommerce</h3>
           <div class="chip-row">
             <span class="chip">PHP</span>
             <span class="chip">WordPress</span>
@@ -827,7 +832,7 @@ Harish Portfolio </title>
           </div>
         </div>
         <div class="skill-group">
-          <h3>Tools & workflow</h3>
+          <h3>Tools &amp; workflow</h3>
           <div class="chip-row">
             <span class="chip">Git</span>
             <span class="chip">Vite</span>
@@ -896,7 +901,7 @@ Harish Portfolio </title>
           <div class="service-icon">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 5.7 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.7-3.5-9s1-6.5 3.5-9z"/></svg>
           </div>
-          <h4>WordPress & WooCommerce</h4>
+          <h4>WordPress &amp; WooCommerce</h4>
           <p>Custom themes, plugins, and full WooCommerce stores — from product setup to checkout and payment integration.</p>
         </div>
 
@@ -958,21 +963,37 @@ Harish Portfolio </title>
       </div>
     </div>
 
+    <!--
+      Zoho Web-to-Lead form.
+      IMPORTANT: there is now only ONE submit handler (in the script at the
+      bottom of the page). Do not add an inline onsubmit="" here again —
+      that was what stopped the POST from ever reaching Zoho.
+    -->
     <form id="contactForm" novalidate
           action="https://crm.zoho.in/crm/WebToLeadForm"
           name="WebToLeads1410112000000565004"
           method="POST"
-          target="hidden_iframe"
-          onsubmit="return zohoValidateAndSubmit()"
+          target="zoho_hidden_iframe"
           accept-charset="UTF-8">
 
-      <!-- Zoho required hidden fields — do not remove -->
+      <!-- Zoho required hidden fields — do not remove or reorder -->
       <input type="text" style="display:none;" name="xnQsjsdp" value="bb6c5c4fbf14aaf6d63cd58d430f8f6ab9e18a4eddcfd5871d8909e11de200c7">
       <input type="hidden" name="zc_gad" id="zc_gad" value="">
       <input type="text" style="display:none;" name="xmIwtLD" value="2d97004529b4e1242efd14df6d7ccd08eae6f539096317c714ce23cd3c3093789062ca7f3a60e53c4d8205ac339ca027">
       <input type="text" style="display:none;" name="actionType" value="TGVhZHM=">
       <input type="text" style="display:none;" name="returnURL" value="https://harry123467.github.io/harish-portfolio/">
-      <input type="text" style="display:none;" name="aG9uZXlwb3Q" value="">
+
+      <!-- Company is MANDATORY on the Leads module. Without it Zoho can
+           reject the submission and no lead is created. -->
+      <input type="text" style="display:none;" name="Company" id="leadCompany" value="Portfolio Website Enquiry">
+
+      <!-- Zoho spam honeypot. Must be empty when submitted, so keep it
+           off-screen (not display:none) and block autofill/tabbing. -->
+      <div class="zoho-honeypot" aria-hidden="true">
+        <label for="aG9uZXlwb3Q">Leave this field empty</label>
+        <input type="text" id="aG9uZXlwb3Q" name="aG9uZXlwb3Q" value=""
+               tabindex="-1" autocomplete="off">
+      </div>
 
       <div class="field-row">
         <div class="field" data-field="name">
@@ -990,78 +1011,31 @@ Harish Portfolio </title>
 
       <div class="field" data-field="subject">
         <label for="subject">Subject</label>
+        <!-- mapped to First Name in CRM; 40 chars is that field's limit -->
         <input type="text" id="subject" name="First Name" maxlength="40">
         <span class="error-msg"></span>
       </div>
 
       <div class="field" data-field="message">
         <label for="message">Message</label>
-        <textarea id="message" name="Description"></textarea>
+        <textarea id="message" name="Description" maxlength="2000"></textarea>
         <span class="error-msg"></span>
       </div>
 
-      <button type="submit" class="btn btn-primary form-submit">Send message</button>
+      <button type="submit" class="btn btn-primary form-submit" id="formSubmitBtn">Send message</button>
       <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
     </form>
 
-    <!-- hidden iframe so submission doesn't leave your page -->
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+    <!-- hidden iframe so submission doesn't leave the page -->
+    <iframe name="zoho_hidden_iframe" id="zoho_hidden_iframe" title="Zoho form target" style="display:none;"></iframe>
   </div>
 </section>
 
-<script>
-function zohoValidateAndSubmit() {
-  var form = document.getElementById('contactForm');
-  var statusEl = document.getElementById('formStatus');
-  var nameField = form['Last Name'];
-  var emailField = form['Email'];
-
-  // clear previous errors
-  form.querySelectorAll('.error-msg').forEach(function(el){ el.textContent = ''; });
-
-  var valid = true;
-
-  if (nameField.value.trim().length === 0) {
-    form.querySelector('[data-field="name"] .error-msg').textContent = 'Name cannot be empty.';
-    nameField.focus();
-    valid = false;
-  }
-
-  var emailVal = emailField.value.trim();
-  if (emailVal.length !== 0) {
-    var atpos = emailVal.indexOf('@');
-    var dotpos = emailVal.lastIndexOf('.');
-    if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= emailVal.length) {
-      form.querySelector('[data-field="email"] .error-msg').textContent = 'Please enter a valid email address.';
-      if (valid) emailField.focus();
-      valid = false;
-    }
-  }
-
-  if (!valid) return false;
-
-  // disable button, show sending state
-  var btn = form.querySelector('.form-submit');
-  btn.disabled = true;
-  statusEl.textContent = 'Sending...';
-
-  // since it's a cross-origin iframe submit, we can't read Zoho's response —
-  // assume success after a short delay, then reset the form
-  setTimeout(function () {
-    statusEl.textContent = "Thanks! Your message has been sent — I'll get back to you soon.";
-    form.reset();
-    btn.disabled = false;
-  }, 1500);
-
-  return true; // let the form actually submit to the iframe
-}
-</script>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Harish 
-Portfolio All Right Reserved.</span>
+    <span>© 2026 Harish Portfolio. All Rights Reserved.</span>
     <div class="footer-links">
       <a href="#top">Back to top</a>
     </div>
@@ -1546,9 +1520,8 @@ Portfolio All Right Reserved.</span>
 
 
   /* ---------- Gallery: generated tiles + lightbox ----------
-     The gallery section is currently not on the page. This block now
-     exits cleanly instead of throwing, which previously stopped the
-     contact form validation below from ever being wired up.
+     The gallery section is currently not on the page, so this block
+     exits cleanly instead of throwing.
   --------------------------------------------------------- */
   var galleryGrid = document.getElementById('galleryGrid');
 
@@ -1625,9 +1598,21 @@ Portfolio All Right Reserved.</span>
     });
   }
 
-  /* ---------- Contact form validation ---------- */
+
+  /* ---------- Contact form: validate, then POST to Zoho ----------
+     This is the ONLY submit handler on the form.
+     - If validation fails -> preventDefault(), nothing is sent.
+     - If validation passes -> we do NOT preventDefault(), so the browser
+       performs the real POST to crm.zoho.in into the hidden iframe.
+     - The iframe's load event tells us Zoho has responded.
+  ---------------------------------------------------------------- */
   var form = document.getElementById('contactForm');
   var status = document.getElementById('formStatus');
+  var submitBtn = document.getElementById('formSubmitBtn');
+  var zohoFrame = document.getElementById('zoho_hidden_iframe');
+  var companyField = document.getElementById('leadCompany');
+  var awaitingZoho = false;
+  var zohoTimeout = null;
 
   var validators = {
     name: function(v){
@@ -1677,26 +1662,53 @@ Portfolio All Right Reserved.</span>
     });
   });
 
+  function finishSubmission(message, type){
+    awaitingZoho = false;
+    if(zohoTimeout){ clearTimeout(zohoTimeout); zohoTimeout = null; }
+    status.textContent = message;
+    status.className = 'form-status ' + (type || '');
+    submitBtn.disabled = false;
+  }
+
+  // Zoho replies inside the hidden iframe. A cross-origin load still
+  // fires this event, even though we can't read the iframe's contents.
+  zohoFrame.addEventListener('load', function(){
+    if(!awaitingZoho) return;               // ignore the initial blank load
+    finishSubmission("Thanks — your message has been sent. I'll reply soon.", 'success');
+    form.reset();
+    companyField.value = 'Portfolio Website Enquiry';  // reset() would clear it
+  });
+
   form.addEventListener('submit', function(e){
-    e.preventDefault();
     var allValid = Object.keys(validators).map(validateField).every(Boolean);
 
     if(!allValid){
+      e.preventDefault();
       status.textContent = 'Please fix the highlighted fields.';
       status.className = 'form-status error';
       return;
     }
 
+    // Fill Company from the visitor's name so leads are identifiable in CRM.
+    var nameVal = fieldEl('name').querySelector('input').value.trim();
+    companyField.value = nameVal ? (nameVal + ' (Website Enquiry)') : 'Portfolio Website Enquiry';
+
+    awaitingZoho = true;
     status.textContent = 'Sending…';
     status.className = 'form-status';
 
-    // No backend is connected in this template — this simulates a send.
-    // Replace this block with a real request (fetch to your API, Formspree, etc.)
-    setTimeout(function(){
-      status.textContent = 'Thanks — your message has been sent. I\'ll reply soon.';
-      status.className = 'form-status success';
-      form.reset();
-    }, 600);
+    // Disable on the next tick — disabling synchronously inside the submit
+    // event can drop the button from the POST in some browsers.
+    setTimeout(function(){ submitBtn.disabled = true; }, 0);
+
+    // Safety net if Zoho never responds.
+    zohoTimeout = setTimeout(function(){
+      if(!awaitingZoho) return;
+      finishSubmission('Still sending… if you do not see a confirmation, please email me directly at harish79880@gmail.com.', 'error');
+    }, 12000);
+
+    // NOTE: no preventDefault() here — this is what actually sends the
+    // form to Zoho CRM.
   });
 
 })();
