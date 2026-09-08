@@ -943,53 +943,119 @@ Harish Portfolio </title>
     </div>
   </section>
 
-  <!-- ---------- CONTACT ---------- -->
-  <section id="contact">
-    <div class="wrap contact-grid">
-      <div class="contact-info">
-        <div class="section-head" style="margin-bottom:24px;">
-          <h2>Let's work together</h2>
+<!-- ---------- CONTACT ---------- -->
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <div class="section-head" style="margin-bottom:24px;">
+        <h2>Let's work together</h2>
+      </div>
+      <p>Have a project in mind, or just want to talk shop? Send a message and I'll get back to you within a couple of days.</p>
+      <div class="contact-detail">
+        <a href="mailto:harish79880@gmail.com"><b>Email :</b>  harish79880@gmail.com</a>
+        <span> <b>Address :</b>  Panchkula, Haryana India</span>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/harish-chauhan-728245258/"><b>LinkedIn:</b> harish-chauhan-728245258</a>
+      </div>
+    </div>
+
+    <form id="contactForm" novalidate
+          action="https://crm.zoho.in/crm/WebToLeadForm"
+          name="WebToLeads1410112000000565004"
+          method="POST"
+          target="hidden_iframe"
+          onsubmit="return zohoValidateAndSubmit()"
+          accept-charset="UTF-8">
+
+      <!-- Zoho required hidden fields — do not remove -->
+      <input type="text" style="display:none;" name="xnQsjsdp" value="bb6c5c4fbf14aaf6d63cd58d430f8f6ab9e18a4eddcfd5871d8909e11de200c7">
+      <input type="hidden" name="zc_gad" id="zc_gad" value="">
+      <input type="text" style="display:none;" name="xmIwtLD" value="2d97004529b4e1242efd14df6d7ccd08eae6f539096317c714ce23cd3c3093789062ca7f3a60e53c4d8205ac339ca027">
+      <input type="text" style="display:none;" name="actionType" value="TGVhZHM=">
+      <input type="text" style="display:none;" name="returnURL" value="https://harry123467.github.io/harish-portfolio/">
+      <input type="text" style="display:none;" name="aG9uZXlwb3Q" value="">
+
+      <div class="field-row">
+        <div class="field" data-field="name">
+          <label for="name">Name</label>
+          <!-- name attribute must stay "Last Name" for Zoho to accept it -->
+          <input type="text" id="name" name="Last Name" autocomplete="name" maxlength="80">
+          <span class="error-msg"></span>
         </div>
-        <p>Have a project in mind, or just want to talk shop? Send a message and I'll get back to you within a couple of days.</p>
-        <div class="contact-detail">
-          <a href="mailto:harish79880@gmail.com"><b>Email :</b>  harish79880@gmail.com</a>
-          <span> <b>Address :</b>  Panchkula, Haryana India</span>
-          <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/harish-chauhan-728245258/"><b>LinkedIn:</b> harish-chauhan-728245258</a>
+        <div class="field" data-field="email">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="Email" ftype="email" autocomplete="email" maxlength="100">
+          <span class="error-msg"></span>
         </div>
       </div>
 
-      <form id="contactForm" novalidate>
-        <div class="field-row">
-          <div class="field" data-field="name">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" autocomplete="name">
-            <span class="error-msg"></span>
-          </div>
-          <div class="field" data-field="email">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="email">
-            <span class="error-msg"></span>
-          </div>
-        </div>
+      <div class="field" data-field="subject">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="First Name" maxlength="40">
+        <span class="error-msg"></span>
+      </div>
 
-        <div class="field" data-field="subject">
-          <label for="subject">Subject</label>
-          <input type="text" id="subject" name="subject">
-          <span class="error-msg"></span>
-        </div>
+      <div class="field" data-field="message">
+        <label for="message">Message</label>
+        <textarea id="message" name="Description"></textarea>
+        <span class="error-msg"></span>
+      </div>
 
-        <div class="field" data-field="message">
-          <label for="message">Message</label>
-          <textarea id="message" name="message"></textarea>
-          <span class="error-msg"></span>
-        </div>
+      <button type="submit" class="btn btn-primary form-submit">Send message</button>
+      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+    </form>
 
-        <button type="submit" class="btn btn-primary form-submit">Send message</button>
-        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-      </form>
-    </div>
-  </section>
+    <!-- hidden iframe so submission doesn't leave your page -->
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+  </div>
+</section>
 
+<script>
+function zohoValidateAndSubmit() {
+  var form = document.getElementById('contactForm');
+  var statusEl = document.getElementById('formStatus');
+  var nameField = form['Last Name'];
+  var emailField = form['Email'];
+
+  // clear previous errors
+  form.querySelectorAll('.error-msg').forEach(function(el){ el.textContent = ''; });
+
+  var valid = true;
+
+  if (nameField.value.trim().length === 0) {
+    form.querySelector('[data-field="name"] .error-msg').textContent = 'Name cannot be empty.';
+    nameField.focus();
+    valid = false;
+  }
+
+  var emailVal = emailField.value.trim();
+  if (emailVal.length !== 0) {
+    var atpos = emailVal.indexOf('@');
+    var dotpos = emailVal.lastIndexOf('.');
+    if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= emailVal.length) {
+      form.querySelector('[data-field="email"] .error-msg').textContent = 'Please enter a valid email address.';
+      if (valid) emailField.focus();
+      valid = false;
+    }
+  }
+
+  if (!valid) return false;
+
+  // disable button, show sending state
+  var btn = form.querySelector('.form-submit');
+  btn.disabled = true;
+  statusEl.textContent = 'Sending...';
+
+  // since it's a cross-origin iframe submit, we can't read Zoho's response —
+  // assume success after a short delay, then reset the form
+  setTimeout(function () {
+    statusEl.textContent = "Thanks! Your message has been sent — I'll get back to you soon.";
+    form.reset();
+    btn.disabled = false;
+  }, 1500);
+
+  return true; // let the form actually submit to the iframe
+}
+</script>
 </main>
 
 <footer>
@@ -1014,6 +1080,7 @@ Portfolio All Right Reserved.</span>
     </div>
   </div>
 </div>
+
 <script>
 (function(){
 
