@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+Harish Portfolio </title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12151A;
+    --ink-soft:#1B2027;
+    --paper:#F5F3ED;
+    --paper-dim:#C9C6BC;
+    --accent:#E4572E;
+    --accent-2:#2E86AB;
+    --line:rgba(245,243,237,0.12);
+    --radius-s:6px;
+    --radius-m:14px;
+    --maxw:1330px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Space Grotesk', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    line-height:1.08;
+    letter-spacing:-0.01em;
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  img{max-width:100%;display:block;}
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  ::selection{background:var(--accent);color:var(--ink);}
+
+  :focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(18,21,26,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:20px 32px;
+    max-width:var(--maxw);
+    margin:0 auto;
+  }
+
+  .logo{
+    font-family:'Fraunces', serif;
+    font-size:1.25rem;
+    font-style:italic;
+    font-weight:500;
+  }
+
+  .nav-links{
+    display:flex;
+    gap:32px;
+    list-style:none;
+    font-size:0.95rem;
+  }
+
+  .nav-links a{
+    color:var(--paper-dim);
+    transition:color 0.2s ease;
+  }
+  .nav-links a:hover{color:var(--paper);}
+
+  .nav-cta{
+    border:1px solid var(--line);
+    padding:9px 18px;
+    border-radius:100px;
+    font-size:0.9rem;
+    transition:border-color 0.2s ease, background 0.2s ease;
+  }
+  .nav-cta:hover{border-color:var(--accent); background:rgba(228,87,46,0.08);}
+
+  .nav-toggle{
+    display:none;
+    background:none;
+    border:none;
+    color:var(--paper);
+    font-size:1.6rem;
+    cursor:pointer;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:96px 0 80px;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:48px;
+    align-items:center;
+  }
+
+  .hero-eyebrow{
+    color:var(--accent);
+    font-size:0.95rem;
+    margin-bottom:18px;
+  }
+
+  .hero h1{
+    font-size:clamp(2.8rem, 6vw, 4.6rem);
+    max-width:11ch;
+  }
+
+  .hero h1 em{
+    font-style:italic;
+    color:var(--accent);
+  }
+
+  .hero p.lead{
+    margin-top:24px;
+    max-width:46ch;
+    font-size:1.15rem;
+    color:var(--paper-dim);
+  }
+
+  .hero-actions{
+    margin-top:36px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 26px;
+    border-radius:100px;
+    font-size:0.98rem;
+    font-weight:500;
+    cursor:pointer;
+    border:1px solid transparent;
+    transition:transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+
+  .btn-primary{background:var(--accent); color:var(--ink);}
+  .btn-primary:hover{background:#f16a41;}
+
+  .btn-ghost{border-color:var(--line); color:var(--paper);}
+  .btn-ghost:hover{border-color:var(--paper-dim);}
+
+  .hero-figure{
+    position:relative;
+    justify-self:center;
+  }
+
+  .hero-frame{
+    position:relative;
+    width:320px;
+    height:380px;
+  }
+
+  .hero-frame .shape{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(155deg, var(--accent) 0%, var(--accent-2) 100%);
+    border-radius:38% 62% 55% 45% / 48% 42% 58% 52%;
+    transform:translate(18px, 18px);
+    opacity:0.85;
+  }
+
+  .hero-frame img{
+    position:relative;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:32px;
+    border:1px solid var(--line);
+    background:var(--ink-soft);
+  }
+
+  /* ---------- SECTION HEADS ---------- */
+  section{padding:96px 0;}
+  section + section{border-top:1px solid var(--line);}
+
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:24px;
+    margin-bottom:52px;
+    flex-wrap:wrap;
+  }
+
+  .project-slider-controls{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    margin-top:8px;
+  }
+
+  .section-head h2{
+    font-size:clamp(2rem, 4vw, 2.8rem);
+  }
+
+  .section-head p{
+    color:var(--paper-dim);
+    max-width:38ch;
+  }
+
+  /* ---------- ABOUT / SKILLS ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+  }
+
+  .about-grid p{
+    color:var(--paper-dim);
+    font-size:1.05rem;
+    max-width:50ch;
+  }
+
+  .about-grid p + p{margin-top:16px;}
+
+  .skill-group{margin-top:28px;}
+  .skill-group:first-child{margin-top:0;}
+
+  .skill-group h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:0.95rem;
+    color:var(--paper-dim);
+    margin-bottom:12px;
+  }
+
+  .chip-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  .chip{
+    padding:8px 16px;
+    border:1px solid var(--line);
+    border-radius:100px;
+    font-size:0.9rem;
+    transition:border-color 0.2s ease, color 0.2s ease;
+  }
+  .chip:hover{border-color:var(--accent-2); color:var(--paper);}
+
+  /* ---------- PROJECTS (slider) ---------- */
+  .project-counter{
+    font-size:0.9rem;
+    color:var(--paper-dim);
+    min-width:60px;
+    text-align:center;
+  }
+
+  .project-tabs{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:-24px;
+    margin-bottom:36px;
+  }
+
+  .tab-btn{
+    background:none;
+    border:1px solid var(--line);
+    color:var(--paper-dim);
+    padding:9px 18px;
+    border-radius:100px;
+    font-family:inherit;
+    font-size:0.9rem;
+    cursor:pointer;
+    transition:border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  }
+  .tab-btn:hover{color:var(--paper); border-color:var(--paper-dim);}
+  .tab-btn.active{
+    color:var(--ink);
+    background:var(--accent-2);
+    border-color:var(--accent-2);
+  }
+
+  .tab-btn .tab-count{
+    font-size:0.78rem;
+    opacity:0.7;
+    margin-left:6px;
+    font-variant-numeric:tabular-nums;
+  }
+
+  .project-slider-outer{
+    position:relative;
+  }
+
+  .project-slider{
+    display:flex;
+    gap:22px;
+    overflow-x:auto;
+    scroll-snap-type:x proximity;
+    padding:6px 4px 20px;
+    scrollbar-width:thin;
+    scrollbar-color:var(--accent-2) transparent;
+  }
+
+  .project-slider::-webkit-scrollbar{height:6px;}
+  .project-slider::-webkit-scrollbar-thumb{background:var(--accent-2); border-radius:100px;}
+
+  .project-card{
+    position:relative;
+    flex:0 0 300px;
+    scroll-snap-align:start;
+    border:1px solid var(--line);
+    border-radius:var(--radius-m);
+    background:var(--ink-soft);
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    transition:border-color 0.25s ease, transform 0.25s ease;
+  }
+  .project-card:hover{border-color:var(--accent); transform:translateY(-4px);}
+
+  .project-card .thumb{
+    aspect-ratio:16/10;
+    overflow:hidden;
+  }
+  .project-card .thumb img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  .project-card .body{
+    padding:22px 24px 24px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+  }
+
+  .project-tag{
+    color:var(--accent-2);
+    font-size:0.82rem;
+    margin-bottom:10px;
+  }
+
+  .project-card h3{
+    font-size:1.2rem;
+    margin-bottom:10px;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+  }
+
+  .project-card .desc{
+    color:var(--paper-dim);
+    font-size:0.92rem;
+    flex:1;
+  }
+
+  .project-meta{
+    margin-top:18px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    align-items:flex-start;
+  }
+
+  .tech-list{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+    font-size:0.76rem;
+    color:var(--paper-dim);
+  }
+
+  .tech-list span{
+    border:1px solid var(--line);
+    padding:3px 9px;
+    border-radius:100px;
+  }
+
+  .project-link{
+    font-size:0.88rem;
+    color:var(--paper);
+    border-bottom:1px solid var(--accent);
+    padding-bottom:2px;
+  }
+
+  .project-empty{
+    color:var(--paper-dim);
+    font-size:0.95rem;
+    padding:40px 4px;
+  }
+
+  .lightbox-btn:disabled{opacity:0.35; cursor:default;}
+  .lightbox-btn:disabled:hover{border-color:var(--line);}
+
+  @media (max-width:520px){
+    .project-card{flex-basis:78vw;}
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:18px;
+  }
+
+  .gallery-item{
+    position:relative;
+    aspect-ratio:1/1;
+    border-radius:var(--radius-s);
+    overflow:hidden;
+    cursor:pointer;
+    border:1px solid var(--line);
+  }
+
+  .gallery-item canvas, .gallery-item svg{
+    width:100%;
+    height:100%;
+    display:block;
+    transition:transform 0.4s ease;
+  }
+  .gallery-item:hover svg{transform:scale(1.06);}
+
+  .gallery-item .label{
+    position:absolute;
+    left:14px;
+    bottom:12px;
+    font-size:0.85rem;
+    background:rgba(18,21,26,0.7);
+    padding:5px 12px;
+    border-radius:100px;
+    opacity:0;
+    transition:opacity 0.25s ease;
+  }
+  .gallery-item:hover .label{opacity:1;}
+
+  @media (max-width:800px){
+    .gallery-grid{grid-template-columns:repeat(2, 1fr);}
+  }
+
+  /* Lightbox */
+  .lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(10,12,15,0.92);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:200;
+    padding:40px;
+  }
+  .lightbox.open{display:flex;}
+
+  .lightbox-inner{
+    max-width:640px;
+    width:100%;
+    text-align:center;
+  }
+
+  .lightbox-inner .frame{
+    width:100%;
+    aspect-ratio:1/1;
+    border-radius:var(--radius-m);
+    overflow:hidden;
+    border:1px solid var(--line);
+  }
+
+  .lightbox-inner .frame svg{width:100%;height:100%;}
+
+  .lightbox-caption{
+    margin-top:18px;
+    color:var(--paper-dim);
+  }
+
+  .lightbox-controls{
+    margin-top:24px;
+    display:flex;
+    justify-content:center;
+    gap:16px;
+  }
+
+  .lightbox-btn{
+    border:1px solid var(--line);
+    background:none;
+    color:var(--paper);
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:1.1rem;
+  }
+  .lightbox-btn:hover{border-color:var(--accent);}
+
+  .lightbox-close{
+    position:absolute;
+    top:28px;
+    right:32px;
+    background:none;
+    border:none;
+    color:var(--paper);
+    font-size:1.8rem;
+    cursor:pointer;
+  }
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:22px;
+  }
+
+  .service-card{
+    border:1px solid var(--line);
+    border-radius:var(--radius-m);
+    background:var(--ink-soft);
+    padding:28px 26px;
+    transition:border-color 0.25s ease, transform 0.25s ease;
+  }
+  .service-card:hover{border-color:var(--accent); transform:translateY(-4px);}
+
+  .service-icon{
+    width:44px;
+    height:44px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(46,134,171,0.14);
+    color:var(--accent-2);
+    margin-bottom:18px;
+  }
+
+  .service-icon svg{
+    width:24px;
+    height:24px;
+    stroke:currentColor;
+    fill:none;
+    stroke-width:1.8;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+
+  .service-card h4{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:1.1rem;
+    margin-bottom:10px;
+  }
+
+  .service-card p{
+    color:var(--paper-dim);
+    font-size:0.92rem;
+  }
+
+  @media (max-width:940px){
+    .services-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:680px){
+    .services-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:0.8fr 1.2fr;
+    gap:64px;
+  }
+
+  .contact-info p{color:var(--paper-dim); max-width:36ch;}
+
+  .contact-detail{
+    margin-top:28px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .contact-detail a, .contact-detail span{
+    font-size:0.98rem;
+    color:var(--paper);
+  }
+
+  form{
+    display:grid;
+    gap:20px;
+  }
+
+  .field-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+
+  .field{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    position:relative;
+  }
+
+  .field label{
+    font-size:0.88rem;
+    color:var(--paper-dim);
+  }
+
+  .field input,
+  .field textarea{
+    background:var(--ink-soft);
+    border:1px solid var(--line);
+    border-radius:var(--radius-s);
+    padding:13px 14px;
+    color:var(--paper);
+    font-family:inherit;
+    font-size:0.98rem;
+    transition:border-color 0.2s ease;
+  }
+
+  .field input:focus,
+  .field textarea:focus{
+    border-color:var(--accent-2);
+    outline:none;
+  }
+
+  .field.invalid input,
+  .field.invalid textarea{
+    border-color:var(--accent);
+  }
+
+  .field textarea{resize:vertical; min-height:130px;}
+
+  .error-msg{
+    font-size:0.82rem;
+    color:var(--accent);
+    min-height:1.1em;
+  }
+
+  .form-submit{
+    justify-self:start;
+    margin-top:6px;
+  }
+
+  .form-status{
+    margin-top:6px;
+    font-size:0.95rem;
+    min-height:1.4em;
+  }
+  .form-status.success{color:#7CC48A;}
+  .form-status.error{color:var(--accent);}
+
+  @media (max-width:760px){
+    .field-row{grid-template-columns:1fr;}
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:40px 0;
+    border-top:1px solid var(--line);
+  }
+
+  footer .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+    color:var(--paper-dim);
+    font-size:0.9rem;
+  }
+
+  .footer-links{
+    display:flex;
+    gap:20px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:940px){
+    .hero .wrap{grid-template-columns:1fr; text-align:left;}
+    .hero-figure{justify-self:start; margin-top:20px;}
+    .about-grid{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:repeat(3, 1fr);}
+  }
+
+  @media (max-width:680px){
+    nav{padding:16px 20px;}
+    .nav-links{
+      position:fixed;
+      top:64px; left:0; right:0;
+      background:var(--ink);
+      border-bottom:1px solid var(--line);
+      flex-direction:column;
+      padding:24px 20px;
+      gap:18px;
+      display:none;
+    }
+    .nav-links.open{display:flex;}
+    .nav-cta{display:none;}
+    .nav-toggle{display:block;}
+    .wrap{padding:0 20px;}
+    section{padding:64px 0;}
+    .gallery-grid{grid-template-columns:repeat(2, 1fr);}
+    .hero-frame{width:220px; height:260px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#top" class="logo">Harish</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Start a project</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ---------- HERO ---------- -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="hero-eyebrow">Frontend, WordPress & Zoho Developer</p>
+        <h1>I build interfaces that feel <em>inevitable</em>.</h1>
+        <p class="lead">Frontend, WordPress and Zoho Developer with 3 years of experience building responsive websites, WooCommerce stores, custom plugins, Zoho solutions, API integrations, and business automation.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View projects</a>
+          <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        </div>
+      </div>
+
+      <div class="hero-figure">
+        <div class="hero-frame">
+          <div class="shape"></div>
+          <!--
+            Replace the src below with your own photo, e.g.:
+            <img src="my-photo.jpg" alt="Alex Rivera">
+            Left empty here so the page works with no files attached.
+          -->
+          <img src="harry1.jpeg" id="heroImg" alt="Portrait of Alex Rivera">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- ABOUT / SKILLS ---------- -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="section-head" style="margin-bottom:24px;">
+          <h2>About</h2>
+        </div>
+        <p>I'm a Frontend, WordPress and Zoho Developer focused on creating modern, responsive websites and smart business solutions. I specialize in clean UI, WooCommerce stores, custom PHP plugins, Zoho automation, and API integrations.</p>
+        <p>Previously at two early-stage startups and a small design studio, building everything from marketing sites to internal tools used by hundreds of people daily.</p>
+        <p>Creating everything from polished, responsive websites to custom Zoho solutions, helping businesses build better digital experiences and streamline their everyday workflows.</p>
+        <p>Building modern websites, responsive interfaces, WooCommerce stores, and smart Zoho solutions — from business websites and landing pages to custom CRM workflows, integrations, and internal business tools.</p>
+      </div>
+
+      <div id="skills">
+        <div class="skill-group">
+          <h3>Front-end Development</h3>
+          <div class="chip-row">
+            <span class="chip">HTML / CSS</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">React Js</span>
+            <span class="chip">Bootstrap</span>
+            <span class="chip">Accessibility</span>
+            <span class="chip">Responsive Web Design</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>WordPress & WooCommerce</h3>
+          <div class="chip-row">
+            <span class="chip">PHP</span>
+            <span class="chip">WordPress</span>
+            <span class="chip">WooCommerce</span>
+            <span class="chip">Custom Plugins</span>
+            <span class="chip">Custom Themes</span>
+            <span class="chip">Gutenberg Blocks</span>
+            <span class="chip">ACF</span>
+            <span class="chip">WP REST API</span>
+            <span class="chip">Payment Gateways</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Tools & workflow</h3>
+          <div class="chip-row">
+            <span class="chip">Git</span>
+            <span class="chip">Vite</span>
+            <span class="chip">Figma to code</span>
+            <span class="chip">Testing</span>
+            <span class="chip">Psd To Wordpress</span>
+            <span class="chip">Psd To Html</span>
+            <span class="chip">Email Template Design</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Zoho Development</h3>
+          <div class="chip-row">
+            <span class="chip">Zoho CRM</span>
+            <span class="chip">Zoho Books</span>
+            <span class="chip">Zoho Forms</span>
+            <span class="chip">Zoho Commerce</span>
+            <span class="chip">Zoho Sites</span>
+            <span class="chip">Zoho API Integration</span>
+            <span class="chip">Workflow Automation</span>
+            <span class="chip">Deluge Script</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- PROJECTS ---------- -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Selected projects</h2>
+      </div>
+      <div class="project-tabs" id="projectTabs">
+        <button class="tab-btn active" data-filter="all">All projects</button>
+        <button class="tab-btn" data-filter="wordpress">WordPress &amp; WooCommerce</button>
+        <button class="tab-btn" data-filter="frontend">Frontend development</button>
+        <button class="tab-btn" data-filter="zoho">Zoho development</button>
+      </div>
+    </div>
+
+    <div class="project-slider-outer">
+      <div class="wrap">
+        <div class="project-slider" id="projectSlider"></div>
+      </div>
+    </div>
+
+    <div class="project-slider-controls">
+      <button class="lightbox-btn" id="projPrev" aria-label="Previous project">‹</button>
+      <span class="project-counter" id="projectCounter">1 / 1</span>
+      <button class="lightbox-btn" id="projNext" aria-label="Next project">›</button>
+    </div>
+  </section>
+
+
+  <!-- ---------- SERVICES ---------- -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Services</h2>
+        <p>What I can build for your business, end to end.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 5.7 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.7-3.5-9s1-6.5 3.5-9z"/></svg>
+          </div>
+          <h4>WordPress & WooCommerce</h4>
+          <p>Custom themes, plugins, and full WooCommerce stores — from product setup to checkout and payment integration.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><polyline points="8 6 3 12 8 18"/><polyline points="16 6 21 12 16 18"/><line x1="13.5" y1="4" x2="10.5" y2="20"/></svg>
+          </div>
+          <h4>Frontend Development</h4>
+          <p>Responsive, accessible websites and landing pages built with clean HTML, CSS, JavaScript, and React.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/><path d="M4 11.5v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>
+          </div>
+          <h4>Zoho Solutions</h4>
+          <p>CRM automation, custom Deluge scripts, and integrations across Zoho Books, Forms, Creator, and Sites.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4"/><rect x="7" y="7" width="10" height="10" rx="2"/></svg>
+          </div>
+          <h4>API Integrations</h4>
+          <p>Connecting WordPress, Zoho, and third-party services so data flows automatically between your tools.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><polygon points="12 3 21 8.5 12 14 3 8.5 12 3"/><polyline points="3 15.5 12 21 21 15.5"/><polyline points="3 12 12 17.5 21 12"/></svg>
+          </div>
+          <h4>PSD / Figma to Code</h4>
+          <p>Pixel-accurate conversion of design files into responsive, production-ready websites.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg>
+          </div>
+          <h4>Business Automation</h4>
+          <p>Workflow automation for repetitive tasks — invoicing, notifications, approvals, and order syncing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- CONTACT ---------- -->
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-info">
+        <div class="section-head" style="margin-bottom:24px;">
+          <h2>Let's work together</h2>
+        </div>
+        <p>Have a project in mind, or just want to talk shop? Send a message and I'll get back to you within a couple of days.</p>
+        <div class="contact-detail">
+          <a href="mailto:harish79880@gmail.com"><b>Email :</b>  harish79880@gmail.com</a>
+          <span> <b>Address :</b>  Panchkula, Haryana India</span>
+          <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/harish-chauhan-728245258/"><b>LinkedIn:</b> harish-chauhan-728245258</a>
+        </div>
+      </div>
+
+      <form id="contactForm" novalidate>
+        <div class="field-row">
+          <div class="field" data-field="name">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" autocomplete="name">
+            <span class="error-msg"></span>
+          </div>
+          <div class="field" data-field="email">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email">
+            <span class="error-msg"></span>
+          </div>
+        </div>
+
+        <div class="field" data-field="subject">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject">
+          <span class="error-msg"></span>
+        </div>
+
+        <div class="field" data-field="message">
+          <label for="message">Message</label>
+          <textarea id="message" name="message"></textarea>
+          <span class="error-msg"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary form-submit">Send message</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Harish 
+Portfolio All Right Reserved.</span>
+    <div class="footer-links">
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Lightbox (kept for the gallery section — harmless if the gallery is not on the page) -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
+  <div class="lightbox-inner">
+    <div class="frame" id="lightboxFrame"></div>
+    <p class="lightbox-caption" id="lightboxCaption"></p>
+    <div class="lightbox-controls">
+      <button class="lightbox-btn" id="lightboxPrev" aria-label="Previous">‹</button>
+      <button class="lightbox-btn" id="lightboxNext" aria-label="Next">›</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+
+  /* ---------- Mobile nav ---------- */
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  if(navToggle && navLinks){
+    navToggle.addEventListener('click', function(){
+      var open = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    navLinks.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+
+  /* ---------- Projects: slider with category tabs ----------
+     category can be a single string OR an array, so a project can
+     appear under more than one tab:
+       category:'wordpress'
+       category:['wordpress','zoho']
+     Add an "image" property to use a real screenshot instead of the
+     generated mockup, e.g. image:'projects/woo-store.png'
+  ------------------------------------------------------------ */
+  var projects = [
+
+    // ---------- WordPress & WooCommerce ----------
+    { category:'wordpress', title:'Multi-Vendor Wholesale Store', tag:'WooCommerce · PHP', desc:'Role-based wholesale pricing, minimum order quantities, and per-vendor shipping rules with a custom checkout flow.', tech:['PHP','WooCommerce','MySQL'] },
+    { category:'wordpress', title:'Custom WooCommerce Plugin', tag:'WordPress Plugin · PHP', desc:'Plugin adding custom product fields, dynamic pricing rules, and an admin settings screen built on the Settings API.', tech:['PHP','WordPress','JavaScript'] },
+    { category:'wordpress', title:'Subscription Box Checkout', tag:'WooCommerce · PHP', desc:'Recurring product bundles with a step-by-step configurator, prorated upgrades, and automated renewal reminders.', tech:['PHP','WooCommerce Subscriptions'] },
+    { category:'wordpress', title:'Booking & Deposit Payments', tag:'WooCommerce · PHP', desc:'Service booking calendar taking partial deposits at checkout, with the balance charged automatically before the appointment.', tech:['PHP','WooCommerce','Stripe'] },
+    { category:['wordpress','zoho'], title:'WooCommerce to Zoho Books Sync', tag:'WordPress · Zoho API', desc:'Orders, customers, and refunds pushed to Zoho Books in near real time, with a retry queue and an admin log for failed syncs.', tech:['PHP','WooCommerce','Zoho Books API'] },
+    { category:'wordpress', title:'Product Feed & Price Importer', tag:'WordPress Plugin · PHP', desc:'Scheduled CSV and API imports that create, update, and retire thousands of products without duplicating SKUs.', tech:['PHP','WP-Cron','WP-CLI'] },
+    { category:'wordpress', title:'Custom Block Theme', tag:'WordPress Theme · PHP', desc:'Full-site editing theme with custom Gutenberg blocks for services, staff profiles, and enquiry forms.', tech:['PHP','Gutenberg','ACF','SCSS'] },
+    { category:'wordpress', title:'Store Speed Optimisation', tag:'WordPress · Performance', desc:'Query tuning, object caching, and a trimmed asset pipeline that cut load time on a 12,000-product catalogue.', tech:['PHP','Redis','MySQL'] },
+    { category:'wordpress', title:'Payment Gateway Integration', tag:'WooCommerce · PHP', desc:'Custom WooCommerce payment gateway with webhook handling, refunds from admin, and full order status sync.', tech:['PHP','WooCommerce','REST API'] },
+    { category:'wordpress', title:'Custom Post Type Directory', tag:'WordPress · PHP', desc:'Searchable business directory built on custom post types and taxonomies, with front-end submissions and moderation.', tech:['PHP','ACF','WP Query'] },
+    { category:'wordpress', title:'WooCommerce Product Configurator', tag:'WooCommerce · PHP', desc:'Live product builder with conditional options and instant price updates written to the cart as custom line items.', tech:['PHP','JavaScript','WooCommerce'] },
+    { category:['wordpress','frontend'], title:'PSD to WordPress Theme', tag:'WordPress Theme · PHP', desc:'Pixel-accurate conversion of a multi-page PSD design into a responsive, page builder-friendly WordPress theme.', tech:['PHP','HTML','CSS','PSD to WordPress'] },
+    { category:'wordpress', title:'REST API Headless Front End', tag:'WordPress · REST API', desc:'WordPress running as a headless CMS, exposing custom endpoints for a separate JavaScript front end.', tech:['PHP','WP REST API','JavaScript'] },
+    { category:'wordpress', title:'Membership & Content Gating', tag:'WordPress Plugin · PHP', desc:'Tiered membership plugin restricting content, downloads, and course access by plan, with expiry handling.', tech:['PHP','WordPress','MySQL'] },
+
+    // ---------- Zoho development ----------
+    { category:'zoho', title:'CRM Lead Scoring Engine', tag:'Zoho CRM · Deluge', desc:'Custom Deluge function that scores incoming leads against 12 weighted criteria and auto-assigns them to reps.', tech:['Deluge','Zoho CRM'] },
+    { category:'zoho', title:'Inventory Manager App', tag:'Zoho Creator', desc:'Multi-warehouse stock tracking app with barcode lookup and low-stock email alerts.', tech:['Zoho Creator','Deluge'] },
+    { category:'zoho', title:'Custom Invoice Templates', tag:'Zoho Books', desc:'Branded, responsive invoice and quote templates generated dynamically from Deluge scripts.', tech:['Zoho Books','Deluge','HTML/CSS'] },
+    { category:'zoho', title:'Ticket Escalation Script', tag:'Zoho Desk · Deluge', desc:'Automated SLA escalation workflow that reassigns overdue tickets and notifies managers.', tech:['Deluge','Zoho Desk'] },
+    { category:'zoho', title:'Employee Onboarding Portal', tag:'Zoho Creator', desc:'Self-service onboarding portal with document uploads, e-signatures, and a progress tracker UI.', tech:['Zoho Creator','JavaScript','CSS'] },
+    { category:'zoho', title:'Multi-App Integration Flow', tag:'Zoho Flow', desc:'Connected Zoho CRM, Books, and Slack so new deals trigger invoices and team notifications automatically.', tech:['Zoho Flow','Deluge'] },
+    { category:'zoho', title:'WhatsApp Notification Script', tag:'Zoho CRM · Deluge', desc:'Deluge integration task that sends order and status updates to customers over WhatsApp.', tech:['Deluge','WhatsApp API'] },
+    { category:'zoho', title:'Custom Analytics Dashboard', tag:'Zoho Creator', desc:'Interactive dashboard widget built with custom HTML/JS pages embedded inside Zoho Creator.', tech:['HTML','JavaScript','Deluge'] },
+    { category:'zoho', title:'Payment Reminder Automation', tag:'Zoho Books · Deluge', desc:'Scheduled Deluge script that chases overdue invoices with tiered reminder emails.', tech:['Deluge','Zoho Books'] },
+    { category:'zoho', title:'Duplicate Record Merge Tool', tag:'Zoho CRM · Deluge', desc:'Custom function to detect and merge duplicate contacts and leads based on fuzzy matching rules.', tech:['Deluge','Zoho CRM'] },
+    { category:'zoho', title:'Leave Management Widget', tag:'Zoho People', desc:'Custom widget showing team leave balances and a calendar view built with HTML and JS.', tech:['Zoho People','JavaScript'] },
+    { category:'zoho', title:'Client Self-Service Portal', tag:'Zoho Creator', desc:'Responsive client portal for viewing orders, invoices, and support tickets in one place.', tech:['Zoho Creator','CSS','Deluge'] },
+    { category:'zoho', title:'Custom Button API Actions', tag:'Zoho CRM · Deluge', desc:'A set of custom buttons that trigger Deluge scripts calling third-party REST APIs from CRM records.', tech:['Deluge','REST API'] },
+    { category:'zoho', title:'Embedded Analytics Reports', tag:'Zoho Analytics', desc:'Embedded, themed reporting dashboards inside a client-facing web app.', tech:['Zoho Analytics','HTML'] },
+    { category:'zoho', title:'Order Tracking App', tag:'Zoho Creator', desc:'End-to-end order tracking app from purchase to delivery, with status pages for customers.', tech:['Zoho Creator','Deluge'] },
+    { category:'zoho', title:'Email Parsing Automation', tag:'Zoho CRM · Deluge', desc:'Deluge email parser that extracts structured data from inbound emails and creates CRM records.', tech:['Deluge','Zoho CRM'] },
+    { category:'zoho', title:'Document Signing Workflow', tag:'Zoho Sign · Deluge', desc:'Automated contract workflow connecting Zoho Sign completion events back into CRM deal stages.', tech:['Zoho Sign','Deluge'] },
+    { category:'zoho', title:'Custom Report Generator', tag:'Zoho Creator · Deluge', desc:'On-demand PDF report generator with dynamic charts rendered from Deluge-fetched data.', tech:['Deluge','PDF'] },
+    { category:'zoho', title:'Territory Assignment Script', tag:'Zoho CRM · Deluge', desc:'Rule-based Deluge script that auto-assigns leads to sales territories by region and product line.', tech:['Deluge','Zoho CRM'] },
+    { category:'zoho', title:'Multi-language Form Builder', tag:'Zoho Creator', desc:'Dynamic form builder supporting multiple languages, with client-side validation.', tech:['Zoho Creator','JavaScript'] },
+    { category:'zoho', title:'Approval Chain Automation', tag:'Zoho CRM · Deluge', desc:'Multi-level approval workflow for discount requests, with escalation and audit logging.', tech:['Deluge','Zoho CRM'] },
+
+    // ---------- Frontend development ----------
+    { category:'frontend', title:'Boutique Hotel Website', tag:'Frontend Development', desc:'Fully responsive marketing site with a booking widget, image galleries, and room availability calendar.', tech:['HTML','CSS','JavaScript'] },
+    { category:'frontend', title:'SaaS Landing Page', tag:'Frontend Development', desc:'Conversion-focused landing page with animated feature sections and a pricing comparison table.', tech:['HTML','CSS','JavaScript'] },
+    { category:'frontend', title:'Restaurant Ordering Site', tag:'Frontend Development', desc:'Menu browsing and online ordering interface with cart state and responsive checkout flow.', tech:['JavaScript','Bootstrap'] },
+    { category:'frontend', title:'Real Estate Listings Site', tag:'Frontend Development', desc:'Property search and listing pages with filters, map view, and a responsive image gallery.', tech:['HTML','CSS','JavaScript'] },
+    { category:'frontend', title:'Email Campaign Templates', tag:'Frontend Development', desc:'Set of responsive HTML email templates tested across major email clients.', tech:['HTML','Email Template Design'] },
+    { category:'frontend', title:'E-commerce Storefront UI', tag:'Frontend Development', desc:'Product listing and cart interface with quantity selectors and responsive checkout steps.', tech:['HTML','CSS','JavaScript'] },
+    { category:'frontend', title:'Personal Portfolio Site', tag:'Frontend Development', desc:'A minimal, animated portfolio site for a photographer with a lightbox gallery.', tech:['HTML','CSS','JavaScript'] },
+    { category:'frontend', title:'PSD to Responsive Website', tag:'Frontend Development', desc:'Pixel-accurate conversion of a multi-page PSD design into a fully responsive website.', tech:['PSD to HTML','CSS'] },
+    { category:'frontend', title:'Nonprofit Donation Site', tag:'Frontend Development', desc:'Accessible donation and volunteer sign-up site with form validation and progress tracking.', tech:['HTML','CSS','JavaScript'] }
+  ];
+
+  var accentPalette = ['#2E86AB','#E4572E','#F2A057','#8FD1DB'];
+
+  function catList(p){
+    return Array.isArray(p.category) ? p.category : [p.category];
+  }
+  function inCategory(p, filter){
+    return filter === 'all' || catList(p).indexOf(filter) !== -1;
+  }
+
+  // ---- Zoho-style thumbnail: a small app/dashboard mockup ----
+  function zohoThumbSvg(seed){
+    var accent = accentPalette[seed % accentPalette.length];
+    var layout = seed % 4;
+    var W = 320, H = 200;
+    var chromeH = 22;
+    var sidebarW = 64;
+
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '">';
+    svg += '<rect width="' + W + '" height="' + H + '" fill="#1B2027"/>';
+    svg += '<rect width="' + W + '" height="' + chromeH + '" fill="#20262E"/>';
+    svg += '<circle cx="14" cy="' + (chromeH / 2) + '" r="3.5" fill="#E4572E"/>';
+    svg += '<circle cx="26" cy="' + (chromeH / 2) + '" r="3.5" fill="#F2A057"/>';
+    svg += '<circle cx="38" cy="' + (chromeH / 2) + '" r="3.5" fill="#4A8F6B"/>';
+    svg += '<rect x="60" y="' + (chromeH / 2 - 5) + '" width="120" height="10" rx="5" fill="#12151A"/>';
+
+    svg += '<rect x="0" y="' + chromeH + '" width="' + sidebarW + '" height="' + (H - chromeH) + '" fill="#171B21"/>';
+    svg += '<rect x="14" y="' + (chromeH + 18) + '" width="' + sidebarW / 2 + '" height="8" rx="4" fill="' + accent + '" opacity="0.9"/>';
+    [40, 62, 84, 106].forEach(function(y){
+      svg += '<rect x="14" y="' + (chromeH + y) + '" width="' + (sidebarW - 28) + '" height="6" rx="3" fill="rgba(255,255,255,0.18)"/>';
+    });
+
+    var cx = sidebarW + 20, cw = W - sidebarW - 40;
+    svg += '<rect x="' + cx + '" y="' + (chromeH + 16) + '" width="' + (cw * 0.55) + '" height="10" rx="5" fill="rgba(255,255,255,0.35)"/>';
+    svg += '<rect x="' + cx + '" y="' + (chromeH + 34) + '" width="' + (cw * 0.8) + '" height="7" rx="3.5" fill="rgba(255,255,255,0.16)"/>';
+
+    if(layout === 0){
+      var bars = [0.4, 0.7, 0.5, 0.9, 0.6, 0.75];
+      var bw = cw / bars.length - 8;
+      bars.forEach(function(h, i){
+        var bh = h * 60;
+        svg += '<rect x="' + (cx + i * (bw + 8)) + '" y="' + (H - 22 - bh) + '" width="' + bw + '" height="' + bh + '" rx="3" fill="' + accent + '" opacity="' + (0.5 + i * 0.08) + '"/>';
+      });
+    } else if(layout === 1){
+      for(var i = 0; i < 3; i++){
+        var cardW = (cw - 16) / 3;
+        var x = cx + i * (cardW + 8);
+        svg += '<rect x="' + x + '" y="' + (chromeH + 56) + '" width="' + cardW + '" height="60" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)"/>';
+        svg += '<rect x="' + (x + 10) + '" y="' + (chromeH + 68) + '" width="' + (cardW - 20) + '" height="8" rx="4" fill="' + accent + '" opacity="0.8"/>';
+        svg += '<rect x="' + (x + 10) + '" y="' + (chromeH + 84) + '" width="' + (cardW - 40) + '" height="6" rx="3" fill="rgba(255,255,255,0.18)"/>';
+      }
+    } else if(layout === 2){
+      for(var r = 0; r < 4; r++){
+        var y = chromeH + 56 + r * 24;
+        svg += '<rect x="' + cx + '" y="' + y + '" width="' + cw + '" height="16" rx="4" fill="rgba(255,255,255,0.05)"/>';
+        svg += '<circle cx="' + (cx + 10) + '" cy="' + (y + 8) + '" r="4" fill="' + accent + '" opacity="0.85"/>';
+        svg += '<rect x="' + (cx + 22) + '" y="' + (y + 4) + '" width="' + (cw * 0.5) + '" height="7" rx="3.5" fill="rgba(255,255,255,0.22)"/>';
+        svg += '<rect x="' + (cx + cw - 40) + '" y="' + (y + 4) + '" width="30" height="7" rx="3.5" fill="rgba(255,255,255,0.14)"/>';
+      }
+    } else {
+      for(var f = 0; f < 3; f++){
+        var fy = chromeH + 54 + f * 30;
+        svg += '<rect x="' + cx + '" y="' + fy + '" width="' + (cw * 0.35) + '" height="6" rx="3" fill="rgba(255,255,255,0.2)"/>';
+        svg += '<rect x="' + cx + '" y="' + (fy + 10) + '" width="' + cw + '" height="14" rx="4" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.12)"/>';
+      }
+      svg += '<rect x="' + cx + '" y="' + (H - 30) + '" width="70" height="18" rx="9" fill="' + accent + '"/>';
+    }
+
+    svg += '</svg>';
+    return svg;
+  }
+
+  // ---- WordPress / WooCommerce thumbnail: storefront & admin mockups ----
+  function wordpressThumbSvg(seed){
+    var accent = accentPalette[seed % accentPalette.length];
+    var layout = seed % 3;
+    var W = 320, H = 200;
+    var chromeH = 22;
+    var barH = 24;
+
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '">';
+    svg += '<rect width="' + W + '" height="' + H + '" fill="#1B2027"/>';
+
+    // browser chrome
+    svg += '<rect width="' + W + '" height="' + chromeH + '" fill="#20262E"/>';
+    svg += '<circle cx="14" cy="' + (chromeH / 2) + '" r="3.5" fill="#E4572E"/>';
+    svg += '<circle cx="26" cy="' + (chromeH / 2) + '" r="3.5" fill="#F2A057"/>';
+    svg += '<circle cx="38" cy="' + (chromeH / 2) + '" r="3.5" fill="#4A8F6B"/>';
+    svg += '<rect x="60" y="' + (chromeH / 2 - 5) + '" width="150" height="10" rx="5" fill="#12151A"/>';
+
+    if(layout === 2){
+      // WP admin: dark left menu, list table, "Add new" button
+      var sidebarW = 58;
+      svg += '<rect x="0" y="' + chromeH + '" width="' + sidebarW + '" height="' + (H - chromeH) + '" fill="#141920"/>';
+      [16, 36, 56, 76, 96, 116].forEach(function(y, i){
+        svg += '<rect x="10" y="' + (chromeH + y) + '" width="' + (sidebarW - 20) + '" height="7" rx="3.5" fill="' + (i === 1 ? accent : 'rgba(255,255,255,0.18)') + '"/>';
+      });
+      var ax = sidebarW + 16, aw = W - sidebarW - 32;
+      svg += '<rect x="' + ax + '" y="' + (chromeH + 16) + '" width="90" height="11" rx="5" fill="rgba(255,255,255,0.38)"/>';
+      svg += '<rect x="' + (ax + aw - 62) + '" y="' + (chromeH + 14) + '" width="62" height="16" rx="8" fill="' + accent + '"/>';
+      for(var r2 = 0; r2 < 4; r2++){
+        var ry = chromeH + 42 + r2 * 24;
+        svg += '<rect x="' + ax + '" y="' + ry + '" width="' + aw + '" height="18" rx="4" fill="rgba(255,255,255,0.05)"/>';
+        svg += '<rect x="' + (ax + 8) + '" y="' + (ry + 5) + '" width="14" height="8" rx="2" fill="rgba(255,255,255,0.16)"/>';
+        svg += '<rect x="' + (ax + 30) + '" y="' + (ry + 5) + '" width="' + (aw * 0.42) + '" height="8" rx="4" fill="rgba(255,255,255,0.24)"/>';
+        svg += '<rect x="' + (ax + aw - 46) + '" y="' + (ry + 5) + '" width="36" height="8" rx="4" fill="' + accent + '" opacity="0.55"/>';
+      }
+    } else {
+      // storefront: header with cart badge, then products or a cart/checkout
+      svg += '<rect x="0" y="' + chromeH + '" width="' + W + '" height="' + barH + '" fill="#20262E"/>';
+      svg += '<rect x="18" y="' + (chromeH + barH / 2 - 5) + '" width="34" height="10" rx="3" fill="' + accent + '"/>';
+      [70, 108, 146].forEach(function(x){
+        svg += '<rect x="' + x + '" y="' + (chromeH + barH / 2 - 3) + '" width="26" height="6" rx="3" fill="rgba(255,255,255,0.2)"/>';
+      });
+      svg += '<rect x="' + (W - 52) + '" y="' + (chromeH + barH / 2 - 7) + '" width="16" height="14" rx="3" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.6"/>';
+      svg += '<circle cx="' + (W - 32) + '" cy="' + (chromeH + barH / 2 - 5) + '" r="6" fill="' + accent + '"/>';
+
+      var top = chromeH + barH;
+
+      if(layout === 0){
+        // product grid with price chips
+        svg += '<rect x="20" y="' + (top + 14) + '" width="96" height="9" rx="4.5" fill="rgba(255,255,255,0.34)"/>';
+        var pw = (W - 40 - 16) / 3;
+        for(var c = 0; c < 3; c++){
+          for(var r = 0; r < 2; r++){
+            var px = 20 + c * (pw + 8);
+            var py = top + 32 + r * 58;
+            svg += '<rect x="' + px + '" y="' + py + '" width="' + pw + '" height="50" rx="7" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)"/>';
+            svg += '<rect x="' + (px + 8) + '" y="' + (py + 8) + '" width="' + (pw - 16) + '" height="20" rx="4" fill="rgba(255,255,255,0.1)"/>';
+            svg += '<rect x="' + (px + 8) + '" y="' + (py + 34) + '" width="' + (pw * 0.5) + '" height="6" rx="3" fill="rgba(255,255,255,0.22)"/>';
+            svg += '<rect x="' + (px + pw - 30) + '" y="' + (py + 33) + '" width="22" height="8" rx="4" fill="' + accent + '" opacity="0.9"/>';
+          }
+        }
+      } else {
+        // cart / checkout: line items on the left, order summary panel on the right
+        var lw = (W - 40) * 0.58;
+        svg += '<rect x="20" y="' + (top + 14) + '" width="80" height="9" rx="4.5" fill="rgba(255,255,255,0.34)"/>';
+        for(var li = 0; li < 3; li++){
+          var ly = top + 32 + li * 30;
+          svg += '<rect x="20" y="' + ly + '" width="' + lw + '" height="24" rx="5" fill="rgba(255,255,255,0.05)"/>';
+          svg += '<rect x="27" y="' + (ly + 5) + '" width="14" height="14" rx="3" fill="rgba(255,255,255,0.14)"/>';
+          svg += '<rect x="48" y="' + (ly + 7) + '" width="' + (lw * 0.42) + '" height="6" rx="3" fill="rgba(255,255,255,0.24)"/>';
+          svg += '<rect x="' + (20 + lw - 34) + '" y="' + (ly + 7) + '" width="26" height="6" rx="3" fill="' + accent + '" opacity="0.75"/>';
+        }
+        var sx = 20 + lw + 12, sw = W - sx - 20;
+        svg += '<rect x="' + sx + '" y="' + (top + 14) + '" width="' + sw + '" height="' + (H - top - 34) + '" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)"/>';
+        [14, 30, 46].forEach(function(oy){
+          svg += '<rect x="' + (sx + 10) + '" y="' + (top + 14 + oy + 8) + '" width="' + (sw - 20) + '" height="6" rx="3" fill="rgba(255,255,255,0.18)"/>';
+        });
+        svg += '<rect x="' + (sx + 10) + '" y="' + (H - 42) + '" width="' + (sw - 20) + '" height="18" rx="9" fill="' + accent + '"/>';
+      }
+    }
+
+    svg += '</svg>';
+    return svg;
+  }
+
+  // ---- Frontend-style thumbnail: a small marketing website mockup ----
+  function frontendThumbSvg(seed){
+    var accent = accentPalette[seed % accentPalette.length];
+    var layout = seed % 3;
+    var W = 320, H = 200;
+    var chromeH = 22;
+    var navH = 26;
+
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '">';
+    svg += '<rect width="' + W + '" height="' + H + '" fill="#1B2027"/>';
+
+    // browser chrome
+    svg += '<rect width="' + W + '" height="' + chromeH + '" fill="#20262E"/>';
+    svg += '<circle cx="14" cy="' + (chromeH / 2) + '" r="3.5" fill="#E4572E"/>';
+    svg += '<circle cx="26" cy="' + (chromeH / 2) + '" r="3.5" fill="#F2A057"/>';
+    svg += '<circle cx="38" cy="' + (chromeH / 2) + '" r="3.5" fill="#4A8F6B"/>';
+    svg += '<rect x="60" y="' + (chromeH / 2 - 5) + '" width="150" height="10" rx="5" fill="#12151A"/>';
+
+    // site nav bar: logo mark + link pills
+    svg += '<rect x="0" y="' + chromeH + '" width="' + W + '" height="' + navH + '" fill="#20262E"/>';
+    svg += '<rect x="20" y="' + (chromeH + navH / 2 - 5) + '" width="10" height="10" rx="3" fill="' + accent + '"/>';
+    [70, 110, 150, 190].forEach(function(x){
+      svg += '<rect x="' + x + '" y="' + (chromeH + navH / 2 - 3) + '" width="28" height="6" rx="3" fill="rgba(255,255,255,0.2)"/>';
+    });
+    svg += '<rect x="' + (W - 74) + '" y="' + (chromeH + navH / 2 - 8) + '" width="54" height="16" rx="8" fill="' + accent + '"/>';
+
+    var top = chromeH + navH;
+
+    if(layout === 0){
+      // hero banner: headline + subline + button, image block to the side
+      svg += '<rect x="20" y="' + (top + 24) + '" width="130" height="14" rx="4" fill="rgba(255,255,255,0.4)"/>';
+      svg += '<rect x="20" y="' + (top + 44) + '" width="150" height="14" rx="4" fill="rgba(255,255,255,0.4)"/>';
+      svg += '<rect x="20" y="' + (top + 68) + '" width="120" height="8" rx="4" fill="rgba(255,255,255,0.18)"/>';
+      svg += '<rect x="20" y="' + (top + 90) + '" width="70" height="20" rx="10" fill="' + accent + '"/>';
+      svg += '<rect x="190" y="' + (top + 20) + '" width="110" height="90" rx="10" fill="rgba(255,255,255,0.08)" stroke="' + accent + '" stroke-opacity="0.4"/>';
+    } else if(layout === 1){
+      // three feature cards in a row
+      svg += '<rect x="20" y="' + (top + 16) + '" width="140" height="10" rx="5" fill="rgba(255,255,255,0.35)"/>';
+      for(var i = 0; i < 3; i++){
+        var cw2 = (W - 40 - 24) / 3;
+        var cx2 = 20 + i * (cw2 + 12);
+        svg += '<rect x="' + cx2 + '" y="' + (top + 36) + '" width="' + cw2 + '" height="72" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)"/>';
+        svg += '<circle cx="' + (cx2 + 18) + '" cy="' + (top + 54) + '" r="7" fill="' + accent + '" opacity="0.85"/>';
+        svg += '<rect x="' + (cx2 + 10) + '" y="' + (top + 68) + '" width="' + (cw2 - 20) + '" height="6" rx="3" fill="rgba(255,255,255,0.22)"/>';
+        svg += '<rect x="' + (cx2 + 10) + '" y="' + (top + 80) + '" width="' + (cw2 - 36) + '" height="5" rx="2.5" fill="rgba(255,255,255,0.14)"/>';
+      }
+    } else {
+      // gallery grid
+      svg += '<rect x="20" y="' + (top + 16) + '" width="120" height="10" rx="5" fill="rgba(255,255,255,0.35)"/>';
+      var gw = (W - 40 - 16) / 3, gh = 42;
+      for(var r = 0; r < 2; r++){
+        for(var c = 0; c < 3; c++){
+          var gx = 20 + c * (gw + 8);
+          var gy = top + 34 + r * (gh + 8);
+          svg += '<rect x="' + gx + '" y="' + gy + '" width="' + gw + '" height="' + gh + '" rx="6" fill="rgba(255,255,255,0.07)" stroke="' + accent + '" stroke-opacity="' + (0.2 + (r + c) * 0.05) + '"/>';
+        }
+      }
+    }
+
+    svg += '</svg>';
+    return svg;
+  }
+
+  // Base64-encodes a generated SVG "screenshot" into a real <img> src.
+  // To use your own screenshot instead, set an "image" property on that
+  // project in the array above, e.g. { title:'...', image:'projects/woo-store.png', ... }
+  function projectThumbSrc(p, seed){
+    var cats = catList(p);
+    var svg;
+    if(cats.indexOf('wordpress') !== -1){
+      svg = wordpressThumbSvg(seed);
+    } else if(cats.indexOf('frontend') !== -1){
+      svg = frontendThumbSvg(seed);
+    } else {
+      svg = zohoThumbSvg(seed);
+    }
+    return 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svg)));
+  }
+
+  var slider = document.getElementById('projectSlider');
+  var projectCounter = document.getElementById('projectCounter');
+  var projPrev = document.getElementById('projPrev');
+  var projNext = document.getElementById('projNext');
+  var tabButtons = document.querySelectorAll('#projectTabs .tab-btn');
+  var visibleProjects = projects.slice();
+
+  function buildCard(p, seed){
+    var card = document.createElement('article');
+    card.className = 'project-card';
+
+    var thumb = document.createElement('div');
+    thumb.className = 'thumb';
+    var img = document.createElement('img');
+    img.loading = 'lazy';
+    img.alt = p.title + ' preview';
+    img.src = p.image ? p.image : projectThumbSrc(p, seed);
+    thumb.appendChild(img);
+
+    var body = document.createElement('div');
+    body.className = 'body';
+
+    var tag = document.createElement('p');
+    tag.className = 'project-tag';
+    tag.textContent = p.tag;
+
+    var h3 = document.createElement('h3');
+    h3.textContent = p.title;
+
+    var desc = document.createElement('p');
+    desc.className = 'desc';
+    desc.textContent = p.desc;
+
+    var meta = document.createElement('div');
+    meta.className = 'project-meta';
+
+    var techList = document.createElement('div');
+    techList.className = 'tech-list';
+    p.tech.forEach(function(t){
+      var span = document.createElement('span');
+      span.textContent = t;
+      techList.appendChild(span);
+    });
+
+    var link = document.createElement('a');
+    link.href = p.url || '#';
+    link.className = 'project-link';
+    link.textContent = 'View project';
+    if(p.url){
+      link.target = '_blank';
+      link.rel = 'noopener';
+    }
+
+    meta.appendChild(techList);
+    meta.appendChild(link);
+    body.appendChild(tag);
+    body.appendChild(h3);
+    body.appendChild(desc);
+    body.appendChild(meta);
+
+    card.appendChild(thumb);
+    card.appendChild(body);
+    return card;
+  }
+
+  function renderProjects(filter){
+    visibleProjects = projects.filter(function(p){ return inCategory(p, filter); });
+    slider.innerHTML = '';
+
+    if(!visibleProjects.length){
+      var empty = document.createElement('p');
+      empty.className = 'project-empty';
+      empty.textContent = 'No projects in this category yet.';
+      slider.appendChild(empty);
+      updateProjectCounter();
+      return;
+    }
+
+    visibleProjects.forEach(function(p, i){
+      slider.appendChild(buildCard(p, i));
+    });
+    slider.scrollLeft = 0;
+    updateProjectCounter();
+  }
+
+  function activeCardIndex(){
+    var cards = slider.querySelectorAll('.project-card');
+    if(!cards.length) return 0;
+    var best = 0, bestDist = Infinity;
+    for(var i = 0; i < cards.length; i++){
+      var d = Math.abs(cards[i].offsetLeft - slider.offsetLeft - slider.scrollLeft);
+      if(d < bestDist){ bestDist = d; best = i; }
+    }
+    return best;
+  }
+
+  function updateProjectCounter(){
+    var total = slider.querySelectorAll('.project-card').length;
+    if(!total){
+      projectCounter.textContent = '0 / 0';
+      projPrev.disabled = true;
+      projNext.disabled = true;
+      return;
+    }
+    var index = activeCardIndex();
+    projectCounter.textContent = (index + 1) + ' / ' + total;
+    projPrev.disabled = slider.scrollLeft <= 2;
+    projNext.disabled = slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 2;
+  }
+
+  function stepSlider(dir){
+    var cards = slider.querySelectorAll('.project-card');
+    if(!cards.length) return;
+    var i = Math.min(Math.max(activeCardIndex() + dir, 0), cards.length - 1);
+    slider.scrollTo({
+      left: cards[i].offsetLeft - slider.offsetLeft,
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+    });
+  }
+
+  slider.addEventListener('scroll', function(){
+    window.requestAnimationFrame(updateProjectCounter);
+  }, { passive:true });
+
+  window.addEventListener('resize', updateProjectCounter);
+
+  projPrev.addEventListener('click', function(){ stepSlider(-1); });
+  projNext.addEventListener('click', function(){ stepSlider(1); });
+
+  // show how many projects sit behind each tab
+  tabButtons.forEach(function(btn){
+    var filter = btn.getAttribute('data-filter');
+    var count = projects.filter(function(p){ return inCategory(p, filter); }).length;
+    var badge = document.createElement('span');
+    badge.className = 'tab-count';
+    badge.textContent = count;
+    btn.appendChild(badge);
+
+    btn.addEventListener('click', function(){
+      tabButtons.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      renderProjects(filter);
+    });
+  });
+
+  renderProjects('all');
+
+
+  /* ---------- Gallery: generated tiles + lightbox ----------
+     The gallery section is currently not on the page. This block now
+     exits cleanly instead of throwing, which previously stopped the
+     contact form validation below from ever being wired up.
+  --------------------------------------------------------- */
+  var galleryGrid = document.getElementById('galleryGrid');
+
+  if(galleryGrid){
+    var palettes = [
+      ['#E4572E','#F2A057'], ['#2E86AB','#8FD1DB'], ['#12151A','#E4572E'],
+      ['#2E86AB','#12151A'], ['#F2A057','#2E86AB'], ['#E4572E','#12151A'],
+      ['#8FD1DB','#12151A'], ['#12151A','#2E86AB']
+    ];
+    var captions = [
+      'Dashboard exploration, v3', 'Onboarding flow sketch', 'Type scale study',
+      'Card component variants', 'Empty state illustration', 'Navigation redesign',
+      'Color system draft', 'Mobile layout study'
+    ];
+
+    var tileSvg = function(colors, seed){
+      var a = colors[0], b = colors[1];
+      return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">' +
+        '<defs><linearGradient id="g' + seed + '" x1="0" y1="0" x2="1" y2="1">' +
+        '<stop offset="0" stop-color="' + a + '"/><stop offset="1" stop-color="' + b + '"/>' +
+        '</linearGradient></defs>' +
+        '<rect width="200" height="200" fill="url(#g' + seed + ')"/>' +
+        '<circle cx="' + (40 + seed * 17 % 120) + '" cy="' + (60 + seed * 23 % 100) + '" r="' + (20 + seed % 4 * 10) + '" fill="rgba(255,255,255,0.18)"/>' +
+        '</svg>';
+    };
+
+    var lightbox = document.getElementById('lightbox');
+    var lightboxFrame = document.getElementById('lightboxFrame');
+    var lightboxCaption = document.getElementById('lightboxCaption');
+    var currentIndex = 0;
+
+    var renderLightbox = function(){
+      lightboxFrame.innerHTML = tileSvg(palettes[currentIndex], currentIndex);
+      lightboxCaption.textContent = captions[currentIndex] + '  ·  ' + (currentIndex + 1) + ' / ' + captions.length;
+    };
+    var openLightbox = function(i){
+      currentIndex = i;
+      renderLightbox();
+      lightbox.classList.add('open');
+    };
+    var closeLightbox = function(){ lightbox.classList.remove('open'); };
+
+    palettes.forEach(function(colors, i){
+      var item = document.createElement('div');
+      item.className = 'gallery-item';
+      item.innerHTML = tileSvg(colors, i) + '<span class="label">' + captions[i] + '</span>';
+      item.setAttribute('tabindex', '0');
+      item.setAttribute('role', 'button');
+      item.setAttribute('aria-label', 'Open image: ' + captions[i]);
+      item.addEventListener('click', function(){ openLightbox(i); });
+      item.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openLightbox(i); }
+      });
+      galleryGrid.appendChild(item);
+    });
+
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    document.getElementById('lightboxPrev').addEventListener('click', function(){
+      currentIndex = (currentIndex - 1 + captions.length) % captions.length;
+      renderLightbox();
+    });
+    document.getElementById('lightboxNext').addEventListener('click', function(){
+      currentIndex = (currentIndex + 1) % captions.length;
+      renderLightbox();
+    });
+    lightbox.addEventListener('click', function(e){
+      if(e.target === lightbox){ closeLightbox(); }
+    });
+    document.addEventListener('keydown', function(e){
+      if(!lightbox.classList.contains('open')) return;
+      if(e.key === 'Escape') closeLightbox();
+      if(e.key === 'ArrowLeft') document.getElementById('lightboxPrev').click();
+      if(e.key === 'ArrowRight') document.getElementById('lightboxNext').click();
+    });
+  }
+
+  /* ---------- Contact form validation ---------- */
+  var form = document.getElementById('contactForm');
+  var status = document.getElementById('formStatus');
+
+  var validators = {
+    name: function(v){
+      if(!v.trim()) return 'Enter your name.';
+      if(v.trim().length < 2) return 'Name looks too short.';
+      return '';
+    },
+    email: function(v){
+      if(!v.trim()) return 'Enter your email.';
+      var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(!re.test(v.trim())) return 'Enter a valid email address.';
+      return '';
+    },
+    subject: function(v){
+      if(!v.trim()) return 'Enter a subject.';
+      return '';
+    },
+    message: function(v){
+      if(!v.trim()) return 'Enter a message.';
+      if(v.trim().length < 10) return 'Message should be at least 10 characters.';
+      return '';
+    }
+  };
+
+  function fieldEl(name){ return form.querySelector('[data-field="' + name + '"]'); }
+
+  function validateField(name){
+    var wrap = fieldEl(name);
+    var input = wrap.querySelector('input, textarea');
+    var errorMsg = wrap.querySelector('.error-msg');
+    var message = validators[name](input.value);
+    if(message){
+      wrap.classList.add('invalid');
+      errorMsg.textContent = message;
+    } else {
+      wrap.classList.remove('invalid');
+      errorMsg.textContent = '';
+    }
+    return !message;
+  }
+
+  Object.keys(validators).forEach(function(name){
+    var input = fieldEl(name).querySelector('input, textarea');
+    input.addEventListener('blur', function(){ validateField(name); });
+    input.addEventListener('input', function(){
+      if(fieldEl(name).classList.contains('invalid')) validateField(name);
+    });
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var allValid = Object.keys(validators).map(validateField).every(Boolean);
+
+    if(!allValid){
+      status.textContent = 'Please fix the highlighted fields.';
+      status.className = 'form-status error';
+      return;
+    }
+
+    status.textContent = 'Sending…';
+    status.className = 'form-status';
+
+    // No backend is connected in this template — this simulates a send.
+    // Replace this block with a real request (fetch to your API, Formspree, etc.)
+    setTimeout(function(){
+      status.textContent = 'Thanks — your message has been sent. I\'ll reply soon.';
+      status.className = 'form-status success';
+      form.reset();
+    }, 600);
+  });
+
+})();
+</script>
+
+</body>
+</html>
